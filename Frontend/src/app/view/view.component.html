@@ -1,0 +1,73 @@
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+ integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<h1>Staff Details</h1>
+
+<div style="overflow-x:auto;" >
+<div class="container-fluid">
+
+    <br><br>
+   
+        <nav class="navbar navbar-light bg-light">
+             <div>
+                   <!-- <i class="fas fa-arrow-alt-circle-left" (click)="goback()" style="font-size:36px;color: #12123b;"></i-->
+               
+                    <input type="submit"  (click)="goback()" value="Logout" class="btn btn-info">
+             </div>
+            
+              <input [(ngModel)]="search" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" style="width: 35%;margin-left:20%;">
+              <button (click)="searchVendor(search)"class="btn btn-outline-success my-2 my-sm-0" type="submit" style="margin-right:30%">Search</button>
+        
+                        <i class="fa fa-user-plus" (click)="newVendors()" style="font-size:36px;margin-left: 90%;"></i>
+               
+
+    </nav>
+    <br>
+    <br>
+    
+    <br>  
+<table class="table" border="1">
+   <thead class="thead-dark"><tr >
+        <th >Vendor Id </th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Location</th>
+        <th>Service</th>
+        <th>Pincode</th>
+        <th>Contact Name</th>  
+        <th>Department</th>
+        <th>Email</th>
+        <th>Phone</th>
+    </tr> </thead>
+    <tbody>
+    <tr class="table-default" *ngFor ="let login of vendors| paginate:{itemsPerPage:3,currentPage:p}" >
+        <td>{{login.vendorId}}</td>
+        <td>{{login.vendorName}}</td>
+        <td>{{login.address}}</td>
+        <td>{{login.location}}</td>
+        <td>{{login.service}}</td>
+        <td>{{login.pincode}}</td>
+        <td>{{login.contactName}}</td>
+        <td>{{login.department}}</td>
+        <td>{{login.email}}</td>
+        <td>{{login.phone}}</td>
+        
+        
+                
+        
+        <td> <i class="fa fa-edit" (click)="edit(login.vendorId)" style="font-size:36px;color: rgb(14, 14, 78)"></i>     
+            |
+            <i class="fa fa-ban" (click)="disableVendor(login)" style="font-size:36px;color: #12123b"></i>
+    
+    </tr></tbody>
+
+</table>
+</div>
+<pagination-controls (pageChange)="p =$event"></pagination-controls>
+
+</div>
